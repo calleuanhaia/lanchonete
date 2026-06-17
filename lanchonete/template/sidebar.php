@@ -1,3 +1,16 @@
+<?php
+    session_start();
+
+    // Verifica se a pessoa realmente fez login
+    if(!isset($_SESSION['usuario_nome'])) {
+        header("Location: login.php");
+        exit();
+    }
+
+    $nome = $_SESSION['usuario_nome'];
+    $email = $_SESSION['usuario_email'];
+    $tipo = $_SESSION['usuario_tipo'];
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -53,9 +66,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
+                    <a href="index.php?page=lista_clientes_f.php" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
                         <i class="fa-solid fa-list-ul w-6"></i>
-                        <span class="font-medium">Pedidos Activos</span>
+                        <span class="font-medium">Pedidos</span>
                         <span class="ml-auto bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">5</span>
                     </a>
                 </li>
@@ -72,7 +85,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
+                    <a href="index.php?page=lista_funcionarios.php" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
                         <i class="fa-solid fa-motorcycle w-6"></i>
                         <span class="font-medium">Entregadores</span>
                     </a>
@@ -103,10 +116,10 @@
             <div class="flex items-center">
                 <img src="https://placehold.co/40x40/f97316/ffffff?text=AD" alt="Admin" class="w-10 h-10 rounded-full border-2 border-slate-600">
                 <div class="ml-3">
-                    <p class="text-sm font-medium text-white">Administrador</p>
-                    <p class="text-xs text-slate-400">admin@lanchemaster.com</p>
+                    <p class="text-sm font-medium text-white"><?php echo $nome; ?></p>
+                    <p class="text-xs text-slate-400"><?php echo $email; ?></p>
                 </div>
-                <button class="ml-auto text-slate-400 hover:text-white transition-colors">
+                <button onclick="location.href='pages/register.php'" class="ml-auto text-slate-400 hover:text-white transition-colors">
                     <i class="fa-solid fa-sign-out-alt"></i>
                 </button>
             </div>

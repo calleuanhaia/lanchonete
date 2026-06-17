@@ -7,10 +7,11 @@
         // receber as informações do formulario pelo metodo post
         $lanches=$_POST['lanches']; 
         $bebidas=$_POST['bebidas']; 
+        $preco = $_POST['preco'];
 
         // tentar realizar o cadastro no banco
         try{
-            $sql="INSERT INTO cardapio (lanches, bebidas) VALUES ('$lanches', '$bebidas')";
+            $sql="INSERT INTO cardapio (lanches, bebidas, preco) VALUES ('$lanches', '$bebidas', $preco)";
             $insert=$pdo->prepare($sql);
             $insert->execute();
 

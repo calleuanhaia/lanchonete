@@ -34,7 +34,7 @@
                         <?php echo $cardapio['bebidas']; ?>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        <?php echo $cardapio['preco']; ?>
+                        <?php echo "R$ ". $cardapio['preco']; ?>
                     </td>
                     <!-- Adicionei 'space-x-2' no <td> para dar um pequeno espaço entre os dois botões -->
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-right space-x-2">

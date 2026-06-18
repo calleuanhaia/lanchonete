@@ -17,7 +17,8 @@
                 <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">ID</th>
                 <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Lanches</th>
                 <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Bebidas</th>
-                <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Preço</th>
+                <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Preço do Lanche</th>
+                <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Preço da Bebida</th>
                 <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Ações</th>
             </tr>
         </thead>
@@ -35,6 +36,9 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         <?php echo "R$ ". $cardapio['preco']; ?>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                        <?php echo "R$ ". $cardapio['preco_b']; ?>
                     </td>
                     <!-- Adicionei 'space-x-2' no <td> para dar um pequeno espaço entre os dois botões -->
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-right space-x-2">

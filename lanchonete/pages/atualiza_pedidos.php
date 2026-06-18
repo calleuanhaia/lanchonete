@@ -22,7 +22,7 @@
     </div>
 
     <div class="p-6">
-        <form method="POST" action="api/cadastrar_cliente.php" class="space-y-5">
+        <form method="POST" action="api/atualizar_pedidos.php" class="space-y-5">
             <input type="hidden" name="id" value="<?php echo isset($cliente['id']) ? $cliente['id'] : ''; ?>">
 
             <div>
@@ -43,6 +43,11 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Pedido</label>
                 <input name="pedido" value="<?php echo isset($cliente['pedido']) ? $cliente['pedido'] : '';?>" placeholder="Ex: 1x X-Tudo, 2x Guarana Lata..." class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Preço</label>
+                <input name="preco" value="<?php echo isset($cliente['preco']) ? $cliente['preco'] : '';?>" placeholder="Ex: R$ 3.50..." class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
             </div>
 
             <div class="pt-4 flex justify-end">

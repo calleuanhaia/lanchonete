@@ -3,7 +3,7 @@
 
     // Verifica se a pessoa realmente fez login
     if(!isset($_SESSION['usuario_nome'])) {
-        header("Location: login.php");
+        header("Location: pages/register.php");
         exit();
     }
 
@@ -54,12 +54,6 @@
         <nav class="flex-1 overflow-y-auto py-4">
             <ul class="space-y-1 px-3">
                 <li>
-                    <a href="index.php?page=exemplo.php" class="flex items-center px-4 py-3 bg-orange-600 text-white rounded-lg transition-colors">
-                        <i class="fa-solid fa-chart-pie w-6"></i>
-                        <span class="font-medium">Dashboard</span>
-                    </a>
-                </li>
-                <li>
                     <a href="index.php?page=lista_cardapio.php" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
                         <i class="fa-solid fa-cash-register w-6"></i>
                         <span class="font-medium">Cardápio</span>
@@ -69,19 +63,6 @@
                     <a href="index.php?page=lista_clientes_f.php" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
                         <i class="fa-solid fa-list-ul w-6"></i>
                         <span class="font-medium">Pedidos</span>
-                        <span class="ml-auto bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">5</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
-                        <i class="fa-solid fa-utensils w-6"></i>
-                        <span class="font-medium">Cardápio</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
-                        <i class="fa-solid fa-users w-6"></i>
-                        <span class="font-medium">Clientes</span>
                     </a>
                 </li>
                 <li>

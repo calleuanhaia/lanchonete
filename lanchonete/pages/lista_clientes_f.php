@@ -6,7 +6,7 @@
     $clientes=$consulta->fetchAll(PDO::FETCH_ASSOC);
 
     if(!isset($_SESSION['usuario_nome'])) {
-        header("Location: login.php");
+        header("Location: register.php");
         exit();
     }
 
@@ -36,7 +36,10 @@
                     <th class="px-6 py-3 font-medium">Nome</th>
                     <th class="px-6 py-3 font-medium">Telefone</th>
                     <th class="px-6 py-3 font-medium">Endereço</th>
-                    <th class="px-6 py-3 font-medium">Pedido</th>
+                    <th class="px-6 py-3 font-medium">Lanche</th>
+                    <th class="px-6 py-3 font-medium">Bebida</th>
+                    <th class="px-6 py-3 font-medium">Preço do Lanche</th>
+                    <th class="px-6 py-3 font-medium">Preço da Bebida</th>
                     <th class="px-6 py-3 font-medium">Ações</th>
                 </tr>
             </thead>
@@ -57,6 +60,15 @@
                         </td>
                         <td class="px-6 py-4 text-gray-600">
                             <?php echo $cliente['pedido']; ?>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">
+                            <?php echo $cliente['pedido_b']; ?>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">
+                            <?php echo "R$ ". $cliente['preco']; ?>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">
+                            <?php echo "R$ ". $cliente['preco_bebida']; ?>
                         </td>
                         <td class="px-6 py-4 text-gray-600">
                             <a href="api/delete.php?table=clientes_f&id=<?php echo $cliente['id']; ?>" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 font-medium text-xs rounded-lg transition-colors cursor-pointer border border-red-100">

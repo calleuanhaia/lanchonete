@@ -8,10 +8,11 @@
         $lanches=$_POST['lanches']; 
         $bebidas=$_POST['bebidas']; 
         $preco = $_POST['preco'];
+        $preco_b = $_POST['preco_b'];
 
         // tentar realizar o cadastro no banco
         try{
-            $sql="INSERT INTO cardapio (lanches, bebidas, preco) VALUES ('$lanches', '$bebidas', $preco)";
+            $sql="INSERT INTO cardapio (lanches, bebidas, preco, preco_bebida) VALUES ('$lanches', '$bebidas', $preco, $preco_b)";
             $insert=$pdo->prepare($sql);
             $insert->execute();
 

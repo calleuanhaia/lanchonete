@@ -6,7 +6,7 @@
     $funcionarios=$consulta->fetchAll(PDO::FETCH_ASSOC);
 
     if(!isset($_SESSION['usuario_nome'])) {
-        header("Location: login.php");
+        header("Location: register.php");
         exit();
     }
 

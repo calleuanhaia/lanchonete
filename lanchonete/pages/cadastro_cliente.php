@@ -17,6 +17,10 @@
 
         $cliente = $consulta->fetch(PDO::FETCH_ASSOC);
     }
+
+    $sql="SELECT * FROM cardapio ORDER BY id DESC";
+    $consulta=$pdo->query($sql);
+    $cardapios=$consulta->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-8 max-w-2xl">
@@ -29,6 +33,7 @@
     <div class="p-6">
         <form method="POST" action="api/cadastrar_cliente.php" class="space-y-5">
             <input type="hidden" name="id" value="<?php echo isset($cliente['id']) ? $cliente['id'] : ''; ?>">
+            <input type="hidden" name="id" value="<?php echo isset($cardapios['id']) ? $cardapios['id'] : ''; ?>">
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
@@ -46,8 +51,41 @@
             </div>
 
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Pedido</label>
-                <input name="pedido" placeholder="Ex: 1x X-Tudo, 2x Guarana Lata..." class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Lanche</label>
+                <select name="pedido" placeholder="Ex: X-Tudo..." class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
+                <?php foreach ($cardapios as $cardapio): ?>
+                    <option><?php echo $cardapio['lanches']; ?></option>
+                <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Bebida</label>
+                <select name="pedido_b" placeholder="Ex: X-Tudo..." class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
+                <?php foreach ($cardapios as $cardapio): ?>
+                    <option><?php echo $cardapio['bebidas']; ?></option>
+                <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Preço do Lanche</label>
+                <select name="preco" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900">
+                    <?php foreach ($cardapios as $cardapio): ?>
+                        <option><?php echo $cardapio['preco'];?></option>
+                    <?php endforeach; ?>
+                </select>
+                
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Preço da Bebida</label>
+                <select name="preco_b" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900">
+                    <?php foreach ($cardapios as $cardapio): ?>
+                        <option><?php echo $cardapio['preco_bebida'];?></option>
+                    <?php endforeach; ?>
+                </select>
+                
             </div>
 
             <div class="pt-4 flex justify-end">

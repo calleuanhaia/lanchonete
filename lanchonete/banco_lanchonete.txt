@@ -1,0 +1,57 @@
+CREATE DATABASE lanchemaster;
+USE lanchemaster;
+
+drop table cardapio;
+drop table clientes;
+drop table funcionarios;
+drop table pagamento;
+drop table clientes_f;
+
+select * from cardapio;
+select * from clientes;
+select * from funcionarios;
+select * from pagamento;
+select * from clientes_f;
+
+CREATE TABLE clientes_f(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(255) NOT NULL,
+telefone VARCHAR(11) NOT NULL,
+endereco VARCHAR(255) NOT NULL,
+lanche VARCHAR(255) NOT NULL,
+bebida VARCHAR(255) NOT NULL,
+preco DECIMAL(10,2),
+preco_bebida DECIMAL(10,2)
+);
+
+CREATE TABLE cardapio (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+lanches VARCHAR(255) NOT NULL,
+bebidas VARCHAR(255) NOT NULL,
+preco DECIMAL(10,2),
+preco_bebida DECIMAL(10,2)
+);
+
+CREATE TABLE pagamento (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+tipo_pagamento VARCHAR(255),
+preco DECIMAL(10,2)
+);
+
+CREATE TABLE clientes (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL,
+senha VARCHAR(255) NOT NULL,
+telefone VARCHAR(11) NOT NULL,
+endereco VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE funcionarios (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL,
+senha VARCHAR(255) NOT NULL,
+telefone VARCHAR(11) NOT NULL,
+trabalho VARCHAR(255) NOT NULL
+);

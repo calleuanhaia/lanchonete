@@ -33,7 +33,8 @@
     <div class="p-6">
         <form method="POST" action="api/cadastrar_cliente.php" class="space-y-5">
             <input type="hidden" name="id" value="<?php echo isset($cliente['id']) ? $cliente['id'] : ''; ?>">
-            <input type="hidden" name="id" value="<?php echo isset($cardapios['id']) ? $cardapios['id'] : ''; ?>">
+            
+            <input type="hidden" name="id_cardapio" value="<?php echo isset($cardapios[0]['id']) ? $cardapios[0]['id'] : ''; ?>">
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
@@ -52,40 +53,36 @@
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Lanche</label>
-                <select name="pedido" placeholder="Ex: X-Tudo..." class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
-                <?php foreach ($cardapios as $cardapio): ?>
-                    <option><?php echo $cardapio['lanches']; ?></option>
-                <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Bebida</label>
-                <select name="pedido_b" placeholder="Ex: X-Tudo..." class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
-                <?php foreach ($cardapios as $cardapio): ?>
-                    <option><?php echo $cardapio['bebidas']; ?></option>
-                <?php endforeach; ?>
+                <select name="pedido" id="pedido_lanche" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
+                    <option value="" data-preco="">Selecione um lanche...</option>
+                    <?php foreach ($cardapios as $cardapio): ?>
+                        <option value="<?php echo $cardapio['lanches']; ?>" data-preco="<?php echo $cardapio['preco']; ?>">
+                            <?php echo $cardapio['lanches']; ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Preço do Lanche</label>
-                <select name="preco" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900">
+                <input type="text" name="preco" id="preco_lanche" readonly placeholder="R$ 0,00" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-200 cursor-not-allowed focus:outline-none text-gray-900">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Bebida</label>
+                <select name="pedido_b" id="pedido_bebida" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900 placeholder-gray-400">
+                    <option value="" data-preco="">Selecione uma bebida...</option>
                     <?php foreach ($cardapios as $cardapio): ?>
-                        <option><?php echo $cardapio['preco'];?></option>
+                        <option value="<?php echo $cardapio['bebidas']; ?>" data-preco="<?php echo $cardapio['preco_bebida']; ?>">
+                            <?php echo $cardapio['bebidas']; ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
-                
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Preço da Bebida</label>
-                <select name="preco_b" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors text-gray-900">
-                    <?php foreach ($cardapios as $cardapio): ?>
-                        <option><?php echo $cardapio['preco_bebida'];?></option>
-                    <?php endforeach; ?>
-                </select>
-                
+                <input type="text" name="preco_b" id="preco_bebida" readonly placeholder="R$ 0,00" class="block w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-200 cursor-not-allowed focus:outline-none text-gray-900">
             </div>
 
             <div class="pt-4 flex justify-end">
@@ -96,3 +93,30 @@
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Função para atualizar o preço
+        function atualizarPreco(selectId, inputPrecoId) {
+            const selectElement = document.getElementById(selectId);
+            const inputPrecoElement = document.getElementById(inputPrecoId);
+            
+            selectElement.addEventListener('change', function() {
+                // Pega a opção que foi selecionada
+                const selectedOption = this.options[this.selectedIndex];
+                
+                // Pega o valor do atributo 'data-preco' dessa opção
+                const preco = selectedOption.getAttribute('data-preco');
+                
+                // Preenche o campo de input com o preço
+                inputPrecoElement.value = preco ? preco : ''; 
+            });
+        }
+
+        // Aplica a lógica para os Lanches e Bebidas
+        atualizarPreco('pedido_lanche', 'preco_lanche');
+        atualizarPreco('pedido_bebida', 'preco_bebida');
+        
+    });
+</script>

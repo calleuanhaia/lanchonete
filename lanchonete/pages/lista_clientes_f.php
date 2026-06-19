@@ -59,10 +59,10 @@
                             <?php echo $cliente['endereco']; ?>
                         </td>
                         <td class="px-6 py-4 text-gray-600">
-                            <?php echo $cliente['pedido']; ?>
+                            <?php echo $cliente['lanche']; ?>
                         </td>
                         <td class="px-6 py-4 text-gray-600">
-                            <?php echo $cliente['pedido_b']; ?>
+                            <?php echo $cliente['bebida']; ?>
                         </td>
                         <td class="px-6 py-4 text-gray-600">
                             <?php echo "R$ ". $cliente['preco']; ?>

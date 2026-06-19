@@ -7,13 +7,14 @@
         $nome = $_POST['nome'];
         $telefone = $_POST['telefone'];
         $endereco = $_POST['endereco'];
-        $pedido = $_POST['pedido'];
+        $lanche = $_POST['lanche'];
+        $bebida = $_POST['bebida'];
         $preco = $_POST['preco'];
-
+        $preco_b = $_POST['preco_b'];
 
         try{
             //preparar comando de inserção no banco
-            $salvar="UPDATE clientes_f SET nome = '$nome', telefone = '$telefone', endereco = '$endereco', pedido = '$pedido', preco = '$preco' WHERE id=$id";
+            $salvar="UPDATE clientes_f SET nome = '$nome', telefone = '$telefone', endereco = '$endereco', lanche = '$lanche', bebida = '$bebida', preco = '$preco', preco_bebida = '$preco_b' WHERE id=$id";
             $env=$pdo->prepare($salvar);
             $env->execute();
 
